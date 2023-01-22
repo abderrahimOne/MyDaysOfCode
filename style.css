@@ -1,0 +1,56 @@
+:root {
+  --sDeg: 0deg;
+  --mDeg: 0deg;
+  --hDeg: 0deg;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  /* background-color: red; */
+}
+.arc {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  justify-content: center;
+  background-color: black;
+}
+.row {
+  height: 15rem;
+  width: 1.5rem;
+  border-radius: 20px;
+  transition: 1s all;
+  background-color: red;
+  position: absolute;
+  transform-origin: center 100%;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row:nth-child(1) {
+  background-color: red;
+  z-index: 4;
+  transform: rotate(var(--sDeg));
+}
+.row:nth-child(2) {
+  z-index: 2;
+  background-color: aqua;
+  transform: rotate(var(--mDeg));
+}
+.row:nth-child(3) {
+  z-index: 1;
+  background-color: rgb(255, 255, 0);
+  transform: rotate(var(--hDeg));
+}
