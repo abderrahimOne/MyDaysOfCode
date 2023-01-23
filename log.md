@@ -16,12 +16,7 @@
 
 ##### amazing project
 
-**Today's Progress**: i have learn some awesome things with js and arrays
+**Today's Progress**: i have learn some awesome things about consoles
 
 **Thoughts**:
-
-1. i learn how to use some and evry functions :`people.every((el) => 2023 - el.year >= 19)`
-1. i learn how to find element or index in array :`console.log(comments.find((e) => e.id === 823423));`
-1. i learn how to remove element in array :`comments.splice(index, 1);`
-
 **Link(s) to work**: ./arrays
