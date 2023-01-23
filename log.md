@@ -16,10 +16,12 @@
 
 ##### amazing project
 
-**Today's Progress**: i create a Playing with CSS Variables and JS and i have learn some awesome things with css
+**Today's Progress**: i have learn some awesome things with js and arrays
 
 **Thoughts**:
 
-1. i learn how to add property to css root :`document.querySelector(":root").setProperty()`
+1. i learn how to use some and evry functions :`people.every((el) => 2023 - el.year >= 19)`
+1. i learn how to find element or index in array :`console.log(comments.find((e) => e.id === 823423));`
+1. i learn how to remove element in array :`comments.splice(index, 1);`
 
-**Link(s) to work**: ./css-vars
+**Link(s) to work**: ./arrays
