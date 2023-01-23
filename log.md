@@ -1,6 +1,6 @@
 @@ -1,15 +1,7 @@
 
-# 100 Days Of Code - Log
+# My Days Of Code - Log
 
 ## goals : master js, master react, learn canvas, master ts.
 
@@ -16,10 +16,10 @@
 
 ##### amazing project
 
-**Today's Progress**: i create a Drum Kit and i have learn some awesome things
+**Today's Progress**: i create a Playing with CSS Variables and JS and i have learn some awesome things with css
 
 **Thoughts**:
 
-1. i learn how to play a audio :`audio.play()`
+1. i learn how to add property to css root :`document.querySelector(":root").setProperty()`
 
-**Link(s) to work**: ./drum
+**Link(s) to work**: ./css-vars

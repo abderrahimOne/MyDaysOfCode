@@ -1,19 +1,13 @@
-let ads = document.querySelectorAll("audio");
-let keys = document.querySelectorAll(".key");
-document.addEventListener("keydown", (e) => {
-  ads.forEach((a) => {
-    if (a.getAttribute("data-key") == e.keyCode) {
-      a.play();
-    }
-  });
+let rg = document.querySelector("input#spacing");
+let br = document.querySelector("input#blur");
+let cl = document.querySelector("input#base");
+let r = document.querySelector(":root");
+cl.addEventListener("change", () => {
+  r.style.setProperty("--color", cl.value);
 });
-document.addEventListener("click", (e) => {
-  ads.forEach((a) => {
-    if (
-      a.getAttribute("data-key") == e.target.getAttribute("data-key") ||
-      a.getAttribute("data-key") == e.target.parentNode.getAttribute("data-key")
-    ) {
-      a.play();
-    }
-  });
+br.addEventListener("change", (e) => {
+  r.style.setProperty("--blur", e.target.value + "px");
+});
+rg.addEventListener("change", () => {
+  r.style.setProperty("--space", rg.value + "px");
 });
