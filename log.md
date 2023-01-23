@@ -12,16 +12,14 @@
 
 **Link to work:** [Calculator App](http://www.example.com)
 
-### Day 0: January 22, 2023
+### Day 0: January 23, 2023
 
 ##### amazing project
 
-**Today's Progress**: i create a clock and i learn a lot about css and js
+**Today's Progress**: i create a Drum Kit and i have learn some awesome things
 
 **Thoughts**:
 
-1. i learn how to modifier a css vareible in js: `document.querySelector(":root").style.setProperty("--sDeg", "test")`
-2. i learn some rotate params (turn,rad):`transform: rotate(2turn);`
-3. i learn transform origin suntaxe :`transform-origin: center 100%;`
+1. i learn how to play a audio :`audio.play()`
 
-**Link(s) to work**: ./clock
+**Link(s) to work**: ./drum
