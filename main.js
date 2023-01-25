@@ -1,17 +1,12 @@
-const pressed = [];
-const secretCode = "wesbos";
-
-window.addEventListener("keyup", (e) => {
-  console.log(e.key);
-  if (e.key === "Backspace") {
-    pressed.splice(-1, 1);
-  } else {
-    pressed.push(e.key);
-    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
-    if (pressed.join("").includes(secretCode)) {
-      console.log("DING DING!");
-      cornify_add();
+let slides = document.querySelectorAll(".slide-in");
+window.onscroll = (e) => {
+  slides.forEach((sl) => {
+    if (600 >= sl.y && -400 <= sl.y) {
+      sl.style.opacity = 1;
+      sl.style.transform = "none";
+    } else {
+      sl.style.opacity = 0;
+      sl.style.transform = " translateX(-30%) scale(0.95)";
     }
-  }
-  console.log(pressed);
-});
+  });
+};
