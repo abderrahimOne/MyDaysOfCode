@@ -2,74 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Sort Without Articles</title>
+    <title>👀👀👀Follow Along Nav</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <style>
-      body {
-        margin: 0;
-        font-family: sans-serif;
-        background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
-        background-size: cover;
-        display: flex;
-        align-items: center;
-        min-height: 100vh;
-      }
+    <nav>
+      <ul class="menu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Order Status</a></li>
+        <li><a href="">Tweets</a></li>
+        <li><a href="">Read Our History</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </nav>
 
-      #bands {
-        list-style: inside square;
-        font-size: 20px;
-        background: white;
-        width: 500px;
-        margin: auto;
-        padding: 0;
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
-      }
-
-      #bands li {
-        border-bottom: 1px solid #efefef;
-        padding: 20px;
-      }
-
-      #bands li:last-child {
-        border-bottom: 0;
-      }
-
-      a {
-        color: #ffc600;
-        text-decoration: none;
-      }
-    </style>
-
-    <ul id="bands"></ul>
+    <div class="wrapper">
+      <p>
+        Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit.
+        Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati
+        distinctio, aut itaque, qui vitae!
+      </p>
+      <p>
+        Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque
+        praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate
+        consequuntur facilis ullam dignissimos, aperiam quam veniam.
+      </p>
+      <p>
+        Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime
+        <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit
+        recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.
+      </p>
+      <p>
+        Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni
+        odit <a href="">totam</a> ut consequatur eveniet sunt quam provident
+        sapiente dicta neque quod.
+      </p>
+      <p>
+        Aliquam <a href="">dicta</a> sequi culpa fugiat
+        <a href="">consequuntur</a> pariatur optio ad minima, maxime
+        <a href="">odio</a>, distinctio magni impedit tempore enim repellendus
+        <a href="">repudiandae</a> quas!
+      </p>
+    </div>
 
     <script>
-      const bands = [
-        "The Plot in You",
-        "The Devil Wears Prada",
-        "Pierce the Veil",
-        "Norma Jean",
-        "The Bled",
-        "Say Anything",
-        "The Midway State",
-        "We Came as Romans",
-        "Counterparts",
-        "Oh, Sleeper",
-        "A Skylit Drive",
-        "Anywhere But Here",
-        "An Old Dog",
-      ];
-      let repleceThing = (a) => {
-        return a.replace(/^(a |the |an )/i, "").trim();
-      };
-      let sorted = bands.sort((a, b) => {
-        return repleceThing(a) > repleceThing(b) ? 1 : -1;
-      });
-      sorted.forEach((band) => {
-        let ul = document.querySelector("#bands");
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(band));
-        ul.append(li);
+      // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+      let as = document.querySelectorAll("a");
+      let span = document.createElement("span");
+      span.className = "highlight";
+      document.body.append(span);
+      as.forEach((a) => {
+        a.addEventListener("mouseenter", (e) => {
+          let span = document.querySelector("span.highlight");
+          const linkCoords = e.target.getBoundingClientRect();
+          span.style.left = linkCoords.x + "px";
+          span.style.top = linkCoords.y + "px";
+          span.style.width = linkCoords.width + "px";
+          span.style.height = linkCoords.height + "px";
+        });
       });
     </script>
   </body>
