@@ -2,33 +2,85 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Countdown Timer</title>
+    <title>Whack A Mole!</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Inconsolata"
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
       rel="stylesheet"
       type="text/css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="timer">
-      <div class="timer__controls">
-        <button data-time="20" class="timer__button">20 Secs</button>
-        <button data-time="300" class="timer__button">Work 5</button>
-        <button data-time="900" class="timer__button">Quick 15</button>
-        <button data-time="1200" class="timer__button">Snack 20</button>
-        <button data-time="3600" class="timer__button">Lunch Break</button>
-        <div class="stop" style="display: none">stop countDown</div>
-        <form name="customForm" id="custom">
-          <input type="text" name="minutes" placeholder="Enter Minutes" />
-        </form>
+    <h1>Whack-a-mole! <span class="score">5</span></h1>
+    <button>Start!</button>
+
+    <div class="game">
+      <div class="hole hole1">
+        <div class="mole"></div>
       </div>
-      <div class="display">
-        <h1 class="display__time-left"></h1>
-        <p class="display__end-time"></p>
+      <div class="hole hole2">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole3">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole4">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole5">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole6">
+        <div class="mole"></div>
       </div>
     </div>
 
-    <script src="main.js"></script>
+    <script>
+      const holes = document.querySelectorAll(".hole");
+      const scoreBoard = document.querySelector(".score");
+      const moles = document.querySelectorAll(".mole");
+      // let points = 0;
+      let end = false;
+      const RandomPos = () => {
+        let r = Math.floor(Math.random() * 6);
+        holes[r].classList.add("up");
+        let dir = 900;
+        setTimeout(() => {
+          holes[r].classList.remove("up");
+          if (holes[r].id !== "clicked") {
+            if (scoreBoard.textContent === "0") {
+              end = true;
+              return;
+            }
+            scoreBoard.textContent = `${parseInt(scoreBoard.textContent) - 1}`;
+          }
+        }, dir);
+      };
+      moles.forEach((m) => {
+        m.onclick = (e) => {
+          if (e.target.parentNode.classList.contains("up")) {
+            e.target.parentNode.id = "clicked";
+            scoreBoard.textContent = `${parseInt(scoreBoard.textContent) + 1}`;
+          }
+        };
+      });
+      document.querySelector("button").onclick = (e) => {
+        if (e.target.textContent === "stop") {
+          end = true;
+        }
+        startGame();
+      };
+
+      let startGame = () => {
+        document.querySelector("button").textContent = "stop";
+        let int = setInterval(() => {
+          if (end) {
+            document.querySelector("button").textContent = "start !";
+            return clearInterval(int);
+          }
+          RandomPos();
+        }, 750);
+      };
+    </script>
   </body>
 </html>
