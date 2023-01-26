@@ -2,65 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Click and Drag</title>
+    <title>Video Speed Scrubber</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body draggable="false">
-    <div class="items">
-      <div class="item item1">01</div>
-      <div class="item item2">02</div>
-      <div class="item item3">03</div>
-      <div class="item item4">04</div>
-      <div class="item item5">05</div>
-      <div class="item item6">06</div>
-      <div class="item item7">07</div>
-      <div class="item item8">08</div>
-      <div class="item item9">09</div>
-      <div class="item item10">10</div>
-      <div class="item item11">11</div>
-      <div class="item item12">12</div>
-      <div class="item item13">13</div>
-      <div class="item item14">14</div>
-      <div class="item item15">15</div>
-      <div class="item item16">16</div>
-      <div class="item item17">17</div>
-      <div class="item item18">18</div>
-      <div class="item item19">19</div>
-      <div class="item item20">20</div>
-      <div class="item item21">21</div>
-      <div class="item item22">22</div>
-      <div class="item item23">23</div>
-      <div class="item item24">24</div>
-      <div class="item item25">25</div>
+  <body>
+    <div class="wrapper">
+      <video
+        class="flex"
+        width="765"
+        height="430"
+        src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        loop
+        controls
+      ></video>
+      <div class="speed">
+        <div class="speed-bar">1×</div>
+      </div>
     </div>
 
     <script>
-      const slider = document.querySelector(".items");
-      let isDown = false;
-      let startX;
-      let scrollLeft;
-
-      // if mouse press long right click
-      slider.onmousedown = (e) => {
-        isDown = true;
-        slider.classList.add("active");
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
+      let isPress = false;
+      let speed = document.querySelector(".speed");
+      let vid = document.querySelector("video");
+      speed.onmousedown = () => {
+        isPress = true;
       };
-      slider.onmouseleave = () => {
-        isDown = false;
-        slider.classList.remove("active");
+      speed.onmousemove = (e) => {
+        if (!isPress) return;
+        let { y, height } = speed.getBoundingClientRect();
+        let prs = 100 - Math.round(((e.clientY - y) / height) * 100);
+        if (prs > 100) {
+          prs = 100;
+        }
+        if (prs < 0) {
+          prs = 0;
+        }
+        speed.firstElementChild.style.height = prs + "%";
+        let vts = 0;
+        if (prs >= 70) vts = 2;
+        if (prs < 70 && prs > 30) vts = 1;
+        if (prs <= 30) vts = 0.5;
+        vid.playbackRate = vts;
+        speed.firstElementChild.textContent = vts + "x";
       };
-      slider.onmouseup = () => {
-        isDown = false;
-        slider.classList.remove("active");
-      };
-      slider.onmousemove = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; //scroll-fast
-        slider.scrollLeft = scrollLeft - walk;
+      speed.onmouseup = () => {
+        isPress = false;
       };
     </script>
   </body>
