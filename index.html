@@ -2,52 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Video Speed Scrubber</title>
+    <title>Countdown Timer</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <video
-        class="flex"
-        width="765"
-        height="430"
-        src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
-        loop
-        controls
-      ></video>
-      <div class="speed">
-        <div class="speed-bar">1×</div>
+    <div class="timer">
+      <div class="timer__controls">
+        <button data-time="20" class="timer__button">20 Secs</button>
+        <button data-time="300" class="timer__button">Work 5</button>
+        <button data-time="900" class="timer__button">Quick 15</button>
+        <button data-time="1200" class="timer__button">Snack 20</button>
+        <button data-time="3600" class="timer__button">Lunch Break</button>
+        <div class="stop" style="display: none">stop countDown</div>
+        <form name="customForm" id="custom">
+          <input type="text" name="minutes" placeholder="Enter Minutes" />
+        </form>
+      </div>
+      <div class="display">
+        <h1 class="display__time-left"></h1>
+        <p class="display__end-time"></p>
       </div>
     </div>
 
-    <script>
-      let isPress = false;
-      let speed = document.querySelector(".speed");
-      let vid = document.querySelector("video");
-      speed.onmousedown = () => {
-        isPress = true;
-      };
-      speed.onmousemove = (e) => {
-        if (!isPress) return;
-        let { y, height } = speed.getBoundingClientRect();
-        let prs = 100 - Math.round(((e.clientY - y) / height) * 100);
-        if (prs > 100) {
-          prs = 100;
-        }
-        if (prs < 0) {
-          prs = 0;
-        }
-        speed.firstElementChild.style.height = prs + "%";
-        let vts = 0;
-        if (prs >= 70) vts = 2;
-        if (prs < 70 && prs > 30) vts = 1;
-        if (prs <= 30) vts = 0.5;
-        vid.playbackRate = vts;
-        speed.firstElementChild.textContent = vts + "x";
-      };
-      speed.onmouseup = () => {
-        isPress = false;
-      };
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

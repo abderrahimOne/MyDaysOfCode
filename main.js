@@ -63,3 +63,57 @@
 //     </script>
 //   </body>
 // // </html> -->
+
+let h1 = document.querySelector("h1");
+let p = document.querySelector("p");
+let stopBtn = document.querySelector(".stop");
+let end = false;
+let clock = (m, s) => {
+  end = false;
+  let sec = s;
+  let min = m;
+  let c = document.querySelectorAll(".timer__controls button ,form");
+  c.forEach((el) => (el.style.display = "none"));
+  stopBtn.style.display = "block";
+  let int = setInterval(() => {
+    if ((min === 0 && sec === 0) || end) {
+      let c = document.querySelectorAll(".timer__controls button ,form");
+      c.forEach((el) => (el.style.display = "block"));
+      stopBtn.style.display = "none";
+      h1.innerHTML = "";
+      p.innerHTML = "";
+      return clearInterval(int);
+    }
+    if (sec === 0) {
+      sec = 60;
+      min--;
+    }
+    sec--;
+    h1.textContent = `${String(min).padStart(2, "0")}:${String(sec).padStart(
+      2,
+      "0"
+    )}`;
+    let date = new Date(Date.now() + min * 60 * 1000);
+    p.textContent = `Be back at ${String(date.getHours()).padStart(
+      2,
+      "0"
+    )}:${String(date.getMinutes() + 1).padStart(2, "0")}`;
+  }, 1000);
+};
+
+document.querySelectorAll(".timer__button").forEach((b) =>
+  b.addEventListener("click", (e) => {
+    let min = Math.round(+e.target.getAttribute("data-time") / 60);
+    let sec = min > 1 ? 0 : +e.target.getAttribute("data-time");
+    clock(min > 1 ? min : 0, sec);
+  })
+);
+
+stopBtn.onclick = () => (end = true);
+
+document.querySelector("#custom").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let min = Math.floor(+e.target.firstElementChild.value);
+  let sec = min > 1 ? 0 : +e.target.firstElementChild.value * 100;
+  clock(min, sec);
+});
